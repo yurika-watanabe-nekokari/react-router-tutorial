@@ -5,7 +5,7 @@ import type { Route } from "./+types/contact";
 
 export async function loader({ params }: Route.LoaderArgs) {
   const contact = await getContact(params.contactId);
-  
+
   if (!contact) {
     throw new Response("Not Found", { status: 404 });
   }
@@ -16,8 +16,6 @@ export async function loader({ params }: Route.LoaderArgs) {
 export default function Contact({ loaderData }: Route.ComponentProps) {
   // @ts-ignore
   const { contact } = loaderData;
-
-  console.log("contact", contact);
 
   return (
     <div id="contact">
